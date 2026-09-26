@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "lenis/dist/lenis.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -48,25 +50,61 @@
 /* Monochrome palette: white · gray · black. */
 :root {
   color-scheme: light;
+  /* Surfaces stay white; ink, accents and fills are a neutral grey ramp. */
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.33 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.33 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.96 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.33 0 0);
+  --primary: oklch(0.42 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.33 0 0);
+  --muted: oklch(0.955 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.93 0 0);
+  --accent-foreground: oklch(0.33 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0 0);
-  --input: oklch(0.92 0 0);
-  --ring: oklch(0.6 0 0);
+  --border: oklch(0.89 0 0);
+  --input: oklch(0.89 0 0);
+  --ring: oklch(0.62 0 0);
   --radius: 0.75rem;
+  /* Decorative tokens used by backgrounds and effects. */
+  --grid-line: oklch(0.4 0 0 / 0.07);
+  --glow: oklch(0.88 0 0);
+}
+
+/* Dark mode: the same neutral grey ramp, inverted. */
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.2 0 0);
+  --foreground: oklch(0.93 0 0);
+  --card: oklch(0.23 0 0);
+  --card-foreground: oklch(0.93 0 0);
+  --popover: oklch(0.24 0 0);
+  --popover-foreground: oklch(0.93 0 0);
+  --primary: oklch(0.88 0 0);
+  --primary-foreground: oklch(0.2 0 0);
+  --secondary: oklch(0.28 0 0);
+  --secondary-foreground: oklch(0.93 0 0);
+  --muted: oklch(0.26 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.3 0 0);
+  --accent-foreground: oklch(0.93 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.14);
+  --ring: oklch(0.6 0 0);
+  --grid-line: oklch(1 0 0 / 0.05);
+  --glow: oklch(0.34 0 0);
+}
+
+/* Theme switch uses a custom circular reveal (see theme-provider.tsx) instead of the default crossfade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 @layer base {
@@ -93,8 +131,8 @@
   /* Subtle dotted grid used behind hero/CTA surfaces. */
   .bg-grid {
     background-image:
-      linear-gradient(to right, oklch(0 0 0 / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(0 0 0 / 0.05) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .mask-radial {
@@ -106,6 +144,12 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Hide the native cursor only while the custom one is mounted (fine pointers). */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

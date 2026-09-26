@@ -53,7 +53,7 @@ export function HowItWorks() {
   );
 
   return (
-    <section id="how-it-works" className="scroll-mt-24 bg-muted/40 py-24 sm:py-32">
+    <section id="how-it-works" className="scroll-mt-24 bg-muted py-24 sm:py-32">
       <div ref={scope}>
         <div data-pin className="md:flex md:min-h-[calc(100vh-64px)] md:items-center">
           <Container className="grid gap-16 md:grid-cols-2 md:items-center">

@@ -1,14 +1,14 @@
-import Link from "next/link";
-
 import { Logo } from "@/components/brand/logo";
 import { Container } from "@/components/layout/container";
+import { NavLink } from "@/components/layout/nav-link";
+import { ThemeSwitcher } from "@/components/theme/theme-toggle";
 import { APP_NAME, FOOTER_LINKS, SITE } from "@/config/site";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t">
+    <footer className="relative overflow-hidden border-t print:hidden">
       <Container className="grid gap-12 py-16 md:grid-cols-[1.5fr_repeat(3,1fr)]">
         <div className="max-w-xs">
           <Logo />
@@ -21,12 +21,12 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-3">
               {group.links.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <NavLink
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -39,7 +39,10 @@ export function SiteFooter() {
           <p>
             © {year} {APP_NAME}, Inc. All rights reserved.
           </p>
-          <p className="font-mono">Made with care.</p>
+          <div className="flex items-center gap-4">
+            <ThemeSwitcher />
+            <p className="font-mono">Made with care.</p>
+          </div>
         </div>
       </Container>
 

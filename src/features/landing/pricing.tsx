@@ -122,12 +122,12 @@ function PlanCard({ plan, billing }: { plan: Plan; billing: Billing }) {
       </ul>
 
       <ButtonLink
-        href="#"
+        href={plan.cta.href}
         variant={featured ? "secondary" : "outline"}
         size="lg"
         className={cn("mt-10 h-11 rounded-full", featured && "bg-background text-foreground hover:bg-background/90")}
       >
-        {plan.cta}
+        {plan.cta.label}
       </ButtonLink>
     </article>
   );

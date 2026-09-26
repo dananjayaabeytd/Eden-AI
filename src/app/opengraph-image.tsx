@@ -18,9 +18,9 @@ export default function OpengraphImage() {
           justifyContent: "center",
           padding: 80,
           background: "#ffffff",
-          color: "#0a0a0a",
+          color: "#3d3d3d",
           backgroundImage:
-            "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
+            "linear-gradient(to right, #ebebeb 1px, transparent 1px), linear-gradient(to bottom, #ebebeb 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       >

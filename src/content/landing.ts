@@ -6,20 +6,23 @@ import {
   Bolt,
   Boxes,
   BrainCircuit,
+  Clock,
   Lock,
+  Mail,
+  MapPin,
   Sparkles,
   Workflow,
   type LucideIcon,
 } from "lucide-react";
 
-import { APP_NAME } from "@/config/site";
+import { APP_NAME, SITE } from "@/config/site";
 
 export const HERO = {
-  badge: { label: "New", text: "Agents that actually finish the job", href: "#features" },
+  badge: { label: "New", text: "Agents that actually finish the job", href: "/#features" },
   title: "Think faster. Build calmer. Ship with AI.",
   subtitle: `${APP_NAME} is the quiet workspace where your team and AI agents collaborate on real work — from first draft to production.`,
-  primaryCta: { label: "Start for free", href: "#pricing" },
-  secondaryCta: { label: "See how it works", href: "#how-it-works" },
+  primaryCta: { label: "Start for free", href: "/#pricing" },
+  secondaryCta: { label: "See how it works", href: "/#how-it-works" },
 } as const;
 
 export const LOGOS = [
@@ -135,7 +138,7 @@ export type Plan = {
   description: string;
   price: { monthly: number; yearly: number } | null;
   features: readonly string[];
-  cta: string;
+  cta: { label: string; href: string };
   featured?: boolean;
 };
 
@@ -145,7 +148,7 @@ export const PLANS: readonly Plan[] = [
     description: "For individuals exploring what AI can do.",
     price: { monthly: 0, yearly: 0 },
     features: ["1 workspace", "100 agent runs / month", "5 integrations", "Community support"],
-    cta: "Get started",
+    cta: { label: "Get started", href: "/#contact" },
   },
   {
     name: "Pro",
@@ -158,7 +161,7 @@ export const PLANS: readonly Plan[] = [
       "Custom workflows",
       "Priority support",
     ],
-    cta: "Start 14‑day trial",
+    cta: { label: "Start 14‑day trial", href: "/#contact" },
     featured: true,
   },
   {
@@ -166,7 +169,7 @@ export const PLANS: readonly Plan[] = [
     description: "For organisations with advanced needs.",
     price: null,
     features: ["SSO & SCIM", "Dedicated infrastructure", "Custom data retention", "99.99% SLA"],
-    cta: "Contact sales",
+    cta: { label: "Contact sales", href: "/#contact" },
   },
 ];
 
@@ -193,4 +196,20 @@ export const CTA = {
   title: "Your best work, now on autopilot.",
   subtitle: `Join 40,000+ teams using ${APP_NAME} to move faster without the noise.`,
   icon: Sparkles,
+} as const;
+
+export const CONTACT = {
+  eyebrow: "Contact",
+  title: "Let's talk about your team.",
+  description: `Questions about pricing, a demo, or how ${APP_NAME} fits your workflow? Send us a note and a real person will get back to you.`,
+  channels: [
+    { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
+    { icon: Clock, label: "Response time", value: "Within 1 business day" },
+    { icon: MapPin, label: "Office", value: "Remote-first · Worldwide" },
+  ],
+  nextSteps: [
+    "We read every message and route it to the right person.",
+    "You'll hear back within one business day.",
+    "For sales enquiries, we'll set up a 20‑minute intro call.",
+  ],
 } as const;

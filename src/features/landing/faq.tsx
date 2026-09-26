@@ -6,7 +6,7 @@ import { FAQS } from "@/content/landing";
 
 export function Faq() {
   return (
-    <section id="faq" className="scroll-mt-24 bg-muted/40 py-24 sm:py-32">
+    <section id="faq" className="scroll-mt-24 bg-muted py-24 sm:py-32">
       <Container className="max-w-3xl">
         <SectionHeading eyebrow="FAQ" title="Questions, answered." />
         <Reveal className="mt-12">
