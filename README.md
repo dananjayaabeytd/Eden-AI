@@ -1,4 +1,4 @@
-# TestAI — web app
+# Eden — web app
 
 A production-ready marketing site built with a monochrome (white · gray · black) design system and motion-first UI.
 
@@ -83,7 +83,7 @@ The app name lives in exactly one place:
 
 ```ts
 // src/config/site.ts
-export const APP_NAME = "TestAI";
+export const APP_NAME = "Eden";
 ```
 
 The header, footer, page metadata, OG image, mobile menu and all copy read from it. Taglines, nav links and footer links are in the same file.
